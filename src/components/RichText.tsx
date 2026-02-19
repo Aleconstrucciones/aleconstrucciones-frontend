@@ -2,7 +2,7 @@ import { StrapiRichText } from "@/types/strapi";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 interface RichTextProps {
-    content: StrapiRichText; //Tipar en futuro
+    content: StrapiRichText;
 }
 
 export function RichText({ content}: RichTextProps) {

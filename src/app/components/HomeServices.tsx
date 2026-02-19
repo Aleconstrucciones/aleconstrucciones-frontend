@@ -20,7 +20,7 @@ function HomeServices({ services }: Props) {
             {services.map((service) => {
                 const imageUrl =
                     service.image?.url &&
-                    `${process.env.NEXT_PUBLIC_STRAPI_URL}${service.image.url}`;
+                    `${service.image.url}`;
 
                 return (
                     <div

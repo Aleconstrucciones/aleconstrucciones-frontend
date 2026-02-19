@@ -16,7 +16,7 @@ function Providers({logo}: Props) {
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 place-items-center">
                 {logo.map((item) => {
 
-                    const logoUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.url}`
+                    const logoUrl = `${item.url}`
 
                     return(
                         <div 
@@ -30,7 +30,6 @@ function Providers({logo}: Props) {
                                     width={120} 
                                     height={120}
                                     className="object-contain max-h-20 w-auto"
-                                    unoptimized 
                                 />
                             )}
                         </div>

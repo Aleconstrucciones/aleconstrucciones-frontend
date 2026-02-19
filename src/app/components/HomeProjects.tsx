@@ -1,4 +1,3 @@
-import { STRAPI_URL } from "@/lib/api";
 import { Project } from "@/types/project";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,7 +20,7 @@ function HomeProjects({ projects }: Props) {
         {projects.map((project) => {
           const imageUrl =
             project.featuredImage?.url &&
-            `${STRAPI_URL}${project.featuredImage.url}`;
+            `${project.featuredImage.url}`;
 
           return (
             <Link
@@ -36,7 +35,6 @@ function HomeProjects({ projects }: Props) {
                   width={600}
                   height={400}
                   className="w-full h-60 sm:h-72 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-                  unoptimized
                 />
               )}
 

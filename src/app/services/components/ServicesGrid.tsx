@@ -2,7 +2,6 @@
 
 import { useRef, useState } from "react";
 import { Service } from "@/types/service";
-import { STRAPI_URL } from "@/lib/api";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -90,12 +89,11 @@ function ServicesGrid({ services }: Props) {
             >
               {service.image?.url && (
                 <Image
-                  src={`${STRAPI_URL}${service.image.url}`}
+                  src={service.image.url}
                   alt={service.image.alternativeText || service.name}
                   height={220}
                   width={220}
                   className="rounded-2xl"
-                  unoptimized
                 />
               )}
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { Service } from "@/types/service";
-import { STRAPI_URL } from "@/lib/api";
 import { RichText } from "@/components/RichText";
 import Image from "next/image";
 import Link from "next/link";
@@ -88,12 +87,11 @@ function ServiceModal({ service, onClose }: Props) {
                 {service.image?.url && (
                   <div className="flex flex-col items-center">
                     <Image
-                      src={`${STRAPI_URL}${service.image.url}`}
+                      src={service.image.url}
                       alt={service.image.alternativeText || service.name}
                       height={450}
                       width={450}
                       className="object-cover rounded-2xl"
-                      unoptimized
                     />
                   </div>
                 )}

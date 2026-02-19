@@ -42,7 +42,7 @@ export function Header() {
             href="/"
             className="flex gap-5 items-center font-bold text-lg tracking-widest text-white"
           >
-            <Image src={"/logo.jpg"} alt="Logo" width={70} height={70} unoptimized className="rounded-full" />
+            <Image src={"/logo.jpg"} alt="Logo" width={70} height={70} className="rounded-full" />
             ALE CONSTRUCCIONES
           </Link>
         </div>

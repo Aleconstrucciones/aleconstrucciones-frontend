@@ -1,7 +1,6 @@
 "use client";
 
 import { Project } from "@/types/project";
-import { STRAPI_URL } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -38,11 +37,10 @@ function ProjectCard({ project, index }: Props) {
       <div className="relative w-full md:w-1/2 h-62 sm:h-80 md:h-105">
         {project.featuredImage && (
           <Image
-            src={`${STRAPI_URL}${project.featuredImage.url}`}
+            src={project.featuredImage.url}
             alt={project.title}
             fill
             className="object-cover"
-            unoptimized
           />
         )}
       </div>

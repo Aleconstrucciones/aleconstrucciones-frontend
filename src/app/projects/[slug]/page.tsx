@@ -5,9 +5,9 @@ import { notFound } from "next/navigation";
 import ProjectDetail from "./components/ProjectDetail";
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return {title: "Proyecto no encontrado"};
 
   return {
-    title: project.title,
+    title: `Proyectos | ${project.title}`,
     description: project.shortDescription || "Obra realizada por Ale Construcciones.",
     openGraph: {
-      title: project.title,
+      title: `Proyectos | ${project.title}`,
       description: project.shortDescription || "Obra realizada por Ale Construcciones",
       images: project.featuredImage?.url ? [{url: project.featuredImage.url},] : [],
     },

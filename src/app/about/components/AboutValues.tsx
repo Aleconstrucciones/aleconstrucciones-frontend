@@ -19,7 +19,7 @@ function AboutValues({ values }: Props) {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 w-full">
           {values.map((value) => {
-            const logoUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${value.logo.url}`;
+            const logoUrl = `${value.logo.url}`;
 
             return (
               <div
@@ -33,7 +33,6 @@ function AboutValues({ values }: Props) {
                     width={100}
                     height={100}
                     className="object-contain"
-                    unoptimized
                   />
                 )}
                 <h3 className="text-xl md:text-2xl font-semibold">

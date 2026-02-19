@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Project } from "@/types/project";
-import { STRAPI_URL } from "@/lib/api";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -43,7 +42,7 @@ export default function ProjectGallery({ project }: Props) {
           className="rounded-2xl overflow-hidden"
         >
           {project.gallery.map((image) => {
-            const imageUrl = `${STRAPI_URL}${image.url}`;
+            const imageUrl = `${image.url}`;
 
             return (
               <SwiperSlide key={image.id}>
@@ -56,7 +55,6 @@ export default function ProjectGallery({ project }: Props) {
                     alt={project.title}
                     fill
                     className="object-contain"
-                    unoptimized
                   />
                 </div>
               </SwiperSlide>
@@ -76,7 +74,6 @@ export default function ProjectGallery({ project }: Props) {
               alt="Imagen ampliada"
               fill
               className="object-contain"
-              unoptimized
             />
           </div>
         </div>

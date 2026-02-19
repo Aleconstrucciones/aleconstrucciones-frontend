@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { Project } from "@/types/project";
-import { STRAPI_URL } from "@/lib/api";
 
 interface Props {
   project: Project;
@@ -10,7 +9,7 @@ interface Props {
 
 export default function ProjectHero({ project }: Props) {
   const imageUrl = project.featuredImage?.url
-    ? `${STRAPI_URL}${project.featuredImage.url}`
+    ? `${project.featuredImage.url}`
     : null;
 
   return (
@@ -22,7 +21,6 @@ export default function ProjectHero({ project }: Props) {
           fill
           priority
           className="object-cover"
-          unoptimized
         />
       )}
 
