@@ -56,7 +56,6 @@ export default function ProjectGallery({ project }: Props) {
                     alt={project.title}
                     fill
                     className="object-contain"
-                    unoptimized
                   />
                 </div>
               </SwiperSlide>
@@ -76,7 +75,6 @@ export default function ProjectGallery({ project }: Props) {
               alt="Imagen ampliada"
               fill
               className="object-contain"
-              unoptimized
             />
           </div>
         </div>

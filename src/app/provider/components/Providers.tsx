@@ -30,7 +30,6 @@ function Providers({logo}: Props) {
                                     width={120} 
                                     height={120}
                                     className="object-contain max-h-20 w-auto"
-                                    unoptimized 
                                 />
                             )}
                         </div>

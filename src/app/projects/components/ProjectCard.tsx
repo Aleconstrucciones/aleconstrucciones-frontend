@@ -42,7 +42,6 @@ function ProjectCard({ project, index }: Props) {
             alt={project.title}
             fill
             className="object-cover"
-            unoptimized
           />
         )}
       </div>

@@ -93,7 +93,6 @@ function ServiceModal({ service, onClose }: Props) {
                       height={450}
                       width={450}
                       className="object-cover rounded-2xl"
-                      unoptimized
                     />
                   </div>
                 )}

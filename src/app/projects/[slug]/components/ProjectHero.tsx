@@ -22,7 +22,6 @@ export default function ProjectHero({ project }: Props) {
           fill
           priority
           className="object-cover"
-          unoptimized
         />
       )}
 

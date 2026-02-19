@@ -66,7 +66,6 @@ function HomeAbout({ about }: Props) {
             width={600}
             height={600}
             className="hidden md:block w-60 sm:w-72 md:w-80 lg:w-full max-w-md rounded-full object-cover"
-            unoptimized
           />
         </div>
 

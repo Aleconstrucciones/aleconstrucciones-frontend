@@ -36,7 +36,6 @@ function HomeProjects({ projects }: Props) {
                   width={600}
                   height={400}
                   className="w-full h-60 sm:h-72 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-                  unoptimized
                 />
               )}
 

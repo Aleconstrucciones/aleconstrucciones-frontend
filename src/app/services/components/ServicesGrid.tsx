@@ -95,7 +95,6 @@ function ServicesGrid({ services }: Props) {
                   height={220}
                   width={220}
                   className="rounded-2xl"
-                  unoptimized
                 />
               )}
 

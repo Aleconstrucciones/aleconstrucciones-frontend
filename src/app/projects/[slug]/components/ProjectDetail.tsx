@@ -23,13 +23,11 @@ export default function ProjectDetail({ project }: Props) {
         gap-16
         lg:grid-cols-2
       ">
-        {/* Columna izquierda */}
         <div className="space-y-12">
           <ProjectInfo project={project} />
           <ProjectContent project={project} />
         </div>
 
-        {/* Columna derecha */}
         <div className="lg:sticky lg:top-24 h-fit">
           <ProjectGallery project={project} />
         </div>
