@@ -47,63 +47,63 @@ export function ContactForm() {
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <aside className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 lg:p-8 shadow-xl lg:sticky lg:top-24">
-        <h2 className="text-2xl font-semibold text-white tracking-wide">
+      <aside className="card p-6 lg:p-8 shadow-xl lg:sticky lg:top-24">
+        <h2 className="text-2xl font-semibold text-title tracking-wide">
           ¿Preferís escribirnos directo?
         </h2>
-        <p className="text-white/70 mt-2 tracking-wide">
+        <p className="text-description/70 mt-2 tracking-wide">
           Abrí el chat de Whatsapp y envianos un mensaje.
         </p>
         <a 
             href="" 
             target="_blank" 
-            className="mt-6 inline-block rounded-xl w-full text-center bg-emerald-500/20 border border-emerald-400/40 text-emerald-200 py-3 font-medium tracking-wide transition hover:bg-green-500/30 hover:border-emerald-400/70"
+            className="mt-6 inline-block rounded-xl w-full text-center font-medium tracking-wide button"
         >
             Whatsapp
         </a>
 
         <div className="mt-6 grid gap-1">
             <div className="flex items-start gap-5">
-                <span className="w-5 h-5 bg-emerald-800 text-emerald-300 rounded-full self-center place-content-center place-items-center">
+                <span className="w-5 h-5 bg-accent/30 text-accent/80 rounded-full self-center place-content-center place-items-center">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                 </span>
                 <div>
-                    <h3 className="text-lg font-medium">Atención personalizada</h3>
-                    <p className="text-sm">Un asesor te responde.</p>
+                    <h3 className="text-lg text-title font-medium">Atención personalizada</h3>
+                    <p className="text-sm text-description/70">Un asesor te responde.</p>
                 </div>
             </div>
             <div className="flex items-start gap-5">
-                <span className="w-5 h-5 bg-emerald-800 text-emerald-300 rounded-full self-center place-content-center place-items-center">
+                <span className="w-5 h-5 bg-accent/30 text-accent/80 rounded-full self-center place-content-center place-items-center">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                 </span>
                 <div>
-                    <h3 className="text-lg font-medium">Respuestas en el día</h3>
-                    <p className="text-sm">Horarios hábiles de X a X.</p>
+                    <h3 className="text-lg font-medium text-title">Respuestas en el día</h3>
+                    <p className="text-sm text-description/70">Horarios hábiles de X a X.</p>
                 </div>
             </div>
             <div className="flex items-start gap-5">
-                <span className="w-5 h-5 bg-emerald-800 text-emerald-300 rounded-full self-center place-content-center place-items-center">
+                <span className="w-5 h-5 bg-accent/30 text-accent/80 rounded-full self-center place-content-center place-items-center">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                 </span>
                 <div>
-                    <h3 className="text-lg font-medium">Asesoramiento sin cargo</h3>
-                    <p className="text-sm">Nos contás y te guiamos.</p>
+                    <h3 className="text-lg font-medium text-title">Asesoramiento sin cargo</h3>
+                    <p className="text-sm text-description/70">Nos contás y te guiamos.</p>
                 </div>
             </div>
 
-            <div className="mt-6 rounded-xl border border-white/10 bg-black/30 p-4">
-                <p>También podés completar el formulario y te respondemos por correo con los detalles.</p>
+            <div className="bg-background border border-accent/50 rounded-2xl mt-10 text-description p-4">
+                <p className="text-description/70">También podés completar el formulario y te respondemos por correo con los detalles.</p>
             </div>
         </div>
       </aside>
 
-      <form onSubmit={handleSubmit} className="lg:col-span-2 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 md:p-8 shadow-2xl flex flex-col gap-6"
+      <form onSubmit={handleSubmit} className="card lg:col-span-2 p-6 md:p-8 shadow-2xl flex flex-col gap-6"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 ">
           <FloatingInput name="name" label="Nombre" required />
@@ -120,7 +120,7 @@ export function ContactForm() {
             {({ open }) => (
                 <div className="relative">
                 <ListboxButton className="form-input flex items-center justify-between">
-                    <span>{type}</span>
+                    <span className="text-description/50">{type}</span>
 
                     <svg className={`w-5 h-5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -136,7 +136,7 @@ export function ContactForm() {
                     leaveFrom="opacity-100 scale-100 translate-y-0"
                     leaveTo="opacity-0 scale-95 translate-y-1"
                 >
-                    <ListboxOptions className="absolute mt-3 w-full rounded-2xl border border-white/10 bg-neutral-900 shadow-2xl overflow-hidden z-20">
+                    <ListboxOptions className="absolute mt-3 w-full rounded-2xl border border-accent/10 bg-card shadow-2xl overflow-hidden z-20">
                     {contactTypes.map((option) => (
                         <ListboxOption
                         key={option}
@@ -172,7 +172,7 @@ export function ContactForm() {
 
         <button
           disabled={loading}
-          className="w-full sm:w-auto sm:self-end rounded-2xl border border-white/30 bg-white/10 text-white font-semibold py-3 px-8 transition hover:border-white hover:bg-white hover:text-black disabled:opacity-60 disabled:cursor-not-allowed"
+          className="w-full sm:w-auto sm:self-end button font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {loading ? "Enviando..." : "Enviar Consulta"}
         </button>

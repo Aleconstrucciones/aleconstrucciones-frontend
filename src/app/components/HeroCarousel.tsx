@@ -34,17 +34,17 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
                                 <Image src={imageUrl} alt={slide.image.alternativeText || slide.title } fill className="object-cover" priority={slide.type === "slogan"} />
                                 <div className="absolute inset-0 bg-black/50"/>
                                 <div className="absolute inset-0 flex items-center">
-                                    <div className="container mx-auto px-6 max-w-3xl text-white">
-                                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                                    <div className="container mx-auto px-6 max-w-3xl">
+                                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-title">
                                             {slide.title}
                                         </h1>
                                         {slide.description && (
-                                            <p className="text-base sm:text-lg md:text-xl mb-6">
+                                            <p className="text-base text-description sm:text-lg md:text-xl mb-6">
                                                 {slide.description}
                                             </p>
                                         )}
                                         {slide.ctaText && slide.ctaLink && (
-                                            <a href={slide.ctaLink} target="_blank" className="inline-block bg-red-500/50 border-red-800 px-6 py-3 font-semibold rounded-md hover:opacity-90 transition">
+                                            <a href={slide.ctaLink} target="_blank" className="inline-block bg-accent/80 text-title px-6 py-3 font-semibold rounded-md hover:opacity-90 transition">
                                                 {slide.ctaText}
                                             </a>
                                         )}

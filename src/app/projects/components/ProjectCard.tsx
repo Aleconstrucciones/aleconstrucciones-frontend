@@ -73,7 +73,7 @@ function ProjectCard({ project, index }: Props) {
 
         <Link
           href={`/projects/${project.slug}`}
-          className="mt-8 w-fit inline-block px-5 py-2.5 text-sm sm:text-base bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+          className="mt-8 w-fit inline-block text-sm sm:text-base button"
         >
           Ver Proyecto
         </Link>

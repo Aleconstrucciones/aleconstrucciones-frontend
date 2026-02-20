@@ -14,11 +14,11 @@ function AboutHero({ title, description }: Props) {
         
         <div className="flex justify-center md:justify-start">
           <Image
-            src="/logo.jpg"
+            src="/logo.svg"
             alt="Logo Empresa"
             width={400}
             height={400}
-            className="rounded-full w-48 h-48 md:w-72 md:h-72 object-cover"
+            className="w-48 h-48 md:w-72 md:h-72 object-cover"
           />
         </div>
 

@@ -30,25 +30,25 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 py-2 transition-all duration-300 bg-black ${
+      className={`fixed top-0 left-0 w-full z-50 py-4 transition-all duration-300 bg-black ${
         scrolled
           ? "md:bg-black/40 md:backdrop-blur-md md:shadow-md"
           : "md:bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="max-w-screen mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-around">
         <div className="flex gap-5 items-center">
           <Link
             href="/"
-            className="flex gap-5 items-center font-bold text-lg tracking-widest text-white"
+            className="flex gap-5 items-center font-bold text-2xl tracking-widest"
           >
-            <Image src={"/logo.jpg"} alt="Logo" width={70} height={70} className="rounded-full" />
-            ALE CONSTRUCCIONES
+            <Image src={"/logo-nav.svg"} alt="Logo" width={70} height={70} className="" />
+            <p className="flex flex-col text-title">ALE<span className="text-accent">CONSTRUCCIONES</span></p> 
           </Link>
         </div>
 
         <div className="hidden md:flex items-center gap-4 lg:gap-8">
-          <nav className="flex gap-4 lg:gap-6 text-xs md:text-sm tracking-wide lg:tracking-wider">
+          <nav className="flex gap-4 lg:gap-6 text-xs md:text-[15px] tracking-wide lg:tracking-wider">
             {navItems.map((item) => {
               const isActive =
                 pathname === item.href ||
@@ -60,8 +60,8 @@ export function Header() {
                   href={item.href}
                   className={`transition-colors ${
                     isActive
-                      ? "font-semibold text-red-600 border-b-2 border-red-600"
-                      : "text-white hover:text-gray-300"
+                      ? "font-semibold text-accent border-b-2 border-accent"
+                      : "text-description transition duration-300 hover:text-description/70"
                   }`}
                 >
                   {item.name}
@@ -72,7 +72,7 @@ export function Header() {
 
           <Link
             href="/contact"
-            className="text-white tracking-wider px-4 py-1 border border-red-600 rounded-2xl text-sm font-semibold transition duration-300 hover:scale-110"
+            className="text-white tracking-wider px-4 py-1 border-2 border-accent rounded-2xl text-sm font-semibold transition duration-300 hover:scale-110"
           >
             COTIZAR
           </Link>

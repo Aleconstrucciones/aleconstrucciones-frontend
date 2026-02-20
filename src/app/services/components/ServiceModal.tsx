@@ -74,7 +74,7 @@ function ServiceModal({ service, onClose }: Props) {
             <div className="relative top-5 md:top-0 flex justify-center md:block p-8 pb-0">
               <button
                 onClick={onClose}
-                className="flex items-center gap-2 text-white border border-red-600/70 px-5 py-2 rounded-full hover:bg-red-600/20 transition"
+                className="flex items-center gap-2 text-white border-2 border-accent/50 px-5 py-2 rounded-full transition duration-300 hover:bg-accent/50"
               >
                 <ArrowLeft size={22} />
                 Volver a los servicios
@@ -106,13 +106,7 @@ function ServiceModal({ service, onClose }: Props) {
                     <Link
                       href="/contact"
                       className="
-                        border border-red-600/70
-                        text-white
-                        text-center
-                        py-3 px-6
-                        rounded-lg
-                        hover:bg-red-600/20
-                        transition-all duration-300
+                        button
                         whitespace-nowrap
                       "
                     >

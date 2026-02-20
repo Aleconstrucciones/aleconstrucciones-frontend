@@ -8,17 +8,21 @@
 
 @theme inline {
   --color-background: var(--background);
-  --color-text: var(--text);
+  --color-title: var(--title);
+  --color-description: var(--description);
   --color-card: var(--card);
+  --color-accent: var(--accent);
 
-  --font-sans: var(--font-roboto);
-  --font-mono: var(--font-geist-mono);
+  --font-roboto: var(--font-roboto);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0b090a;
-    --text: #ededed;
+    --card: #161A1D;
+    --description: #F5F3F4;
+    --title: #FFFFFF;
+    --accent: #BA181B;
 
   }
 }
@@ -26,16 +30,24 @@
 body {
   background: var(--background);
   color: var(--text);
-  font-family: var(--font-sans);
+  font-family: var(--font-roboto);
 }
 
 .form-input {
   @apply w-full rounded-2xl border-2 border-red-500/40 px-4 py-3 text-white placeholder-white/40 transition focus:outline-none focus:border-red-500/70;
 }
 
+.button {
+  @apply border-2 border-accent/50 text-title px-8 py-3 rounded-xl transition duration-300 hover:bg-accent/50;
+}
+
+.card {
+  @apply border border-accent/50 bg-card/20 rounded-2xl backdrop-blur-xl;
+}
+
 .swiper-button-next,
 .swiper-button-prev {
-  color: red !important;
+  color: var(--accent) !important;
 }
 
 .swiper .swiper-pagination-bullet {
@@ -47,7 +59,7 @@ body {
 }
 
 .swiper .swiper-pagination-bullet-active {
-  background: red;
+  background: var(--accent);
   width: 14px;
   border-radius: 20px;
   opacity: 1;

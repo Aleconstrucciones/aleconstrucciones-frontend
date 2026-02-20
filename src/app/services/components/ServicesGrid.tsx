@@ -105,15 +105,10 @@ function ServicesGrid({ services }: Props) {
                 onClick={() => setSelectedService(service)}
                 className="
                   mt-4
-                  px-6 py-3
                   text-sm
-                  rounded-lg
                   uppercase
                   tracking-wider
-                  border-2 border-red-600/80
-                  text-white
-                  transition-all duration-300
-                  hover:scale-115
+                  button
                 "
               >
                 Ver detalles
