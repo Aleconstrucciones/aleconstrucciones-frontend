@@ -7,7 +7,7 @@ interface Props {
 
 function ProjectsList({ projects }: Props) {
     return (
-        <div className="flex flex-col gap-16 md:gap-24">
+        <div className="flex flex-col gap-15 my-20">
             {projects.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
             ))}

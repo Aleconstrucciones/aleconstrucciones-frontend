@@ -7,24 +7,24 @@ interface Props {
 
 function AboutValues({ values }: Props) {
   return (
-    <section className="py-16 md:py-20">
+    <section className="py-16 md:py-20 max-w-[70vw] mx-auto">
       <div className="flex flex-col items-center gap-12">
 
         <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-title font-semibold">
             Nuestros Valores
           </h2>
-          <span className="mt-2 md:mt-4 block h-1 w-24 md:w-40 bg-neutral-500 mx-auto" />
+          <span className="mt-2 md:mt-4 block h-1 w-24 md:w-40 bg-accent mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 w-full">
           {values.map((value) => {
             const logoUrl = `${value.logo.url}`;
 
             return (
               <div
                 key={value.id}
-                className="flex flex-col items-center text-center gap-4 border border-neutral-700 p-6 rounded-2xl hover:shadow-lg transition"
+                className="card flex flex-col items-center text-center gap-4 px-6 py-6"
               >
                 {value.logo.url && (
                   <Image
@@ -35,10 +35,10 @@ function AboutValues({ values }: Props) {
                     className="object-contain"
                   />
                 )}
-                <h3 className="text-xl md:text-2xl font-semibold">
+                <h3 className="text-xl md:text-2xl text-title font-semibold">
                   {value.title}
                 </h3>
-                <p className="text-sm md:text-base tracking-wide text-neutral-300">
+                <p className="text-sm md:text-base tracking-wide text-description">
                   {value.description}
                 </p>
               </div>

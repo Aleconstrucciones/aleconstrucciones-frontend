@@ -65,7 +65,7 @@ export function ContactForm() {
         <div className="mt-6 grid gap-1">
             <div className="flex items-start gap-5">
                 <span className="w-5 h-5 bg-accent/30 text-accent/80 rounded-full self-center place-content-center place-items-center">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                    <svg className="w-5 md:w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                 </span>
@@ -76,7 +76,7 @@ export function ContactForm() {
             </div>
             <div className="flex items-start gap-5">
                 <span className="w-5 h-5 bg-accent/30 text-accent/80 rounded-full self-center place-content-center place-items-center">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                    <svg className="w-5 md:w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                 </span>
@@ -87,7 +87,7 @@ export function ContactForm() {
             </div>
             <div className="flex items-start gap-5">
                 <span className="w-5 h-5 bg-accent/30 text-accent/80 rounded-full self-center place-content-center place-items-center">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                    <svg className="w-5 md:w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                 </span>

@@ -16,11 +16,11 @@ async function AboutPage() {
     const data = response.data;
     
     return (
-        <main className="mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <section className="mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 lg:px-8 max-w-full mx-auto">
             <AboutHero title={data.title} description={data.description} />
             <MissionVision mission={data.mission} vision={data.vision} />
             <AboutValues values={data.value} />
-        </main>
+        </section>
     );
 }
 

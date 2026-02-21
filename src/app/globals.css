@@ -51,7 +51,8 @@ body {
 }
 
 .swiper .swiper-pagination-bullet {
-  width: 6px;
+  position: relative;
+  top: 5px;
   height: 6px;
   background: gray;
   opacity: 0.5;

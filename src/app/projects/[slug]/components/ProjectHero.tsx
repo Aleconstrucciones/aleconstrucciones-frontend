@@ -24,12 +24,10 @@ export default function ProjectHero({ project }: Props) {
         />
       )}
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/50" />
 
-      {/* Title */}
       <div className="absolute inset-0 flex items-center justify-center px-4">
-        <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center max-w-4xl">
+        <h1 className="text-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center max-w-4xl">
           {project.title}
         </h1>
       </div>

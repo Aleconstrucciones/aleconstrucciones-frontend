@@ -14,23 +14,15 @@ export default function ProjectDetail({ project }: Props) {
 
       <ProjectHero project={project} />
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-4
-        py-12
-        grid
-        gap-16
-        lg:grid-cols-2
-      ">
-        <div className="space-y-12">
+      <div className="max-w-[95vw] xl:max-w-[70vw] mx-auto px-4 py-16 space-y-20">
+
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 place-items-center lg:place-content-start">
           <ProjectInfo project={project} />
           <ProjectContent project={project} />
         </div>
 
-        <div className="lg:sticky lg:top-24 h-fit">
-          <ProjectGallery project={project} />
-        </div>
+        <ProjectGallery project={project} />
+
       </div>
 
     </main>

@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/ContactForm";
 function HomeContact() {
 
     return(
-        <section className="max-w-7xl mx-auto px-6 py-16">
+        <section className="max-w-7xl mx-auto px-6 py-20">
             <div>
                 <span className="inline-flex items-center mb-5 rounded-full border border-accent/30 bg-accent/50 px-2 py-1 md:px-3 md:py-2 text-xs tracking-[0.15rem] text-description/80 backdrop-blur">
                     CONTACTO

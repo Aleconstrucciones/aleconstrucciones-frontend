@@ -30,24 +30,24 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 py-4 transition-all duration-300 bg-black ${
+      className={`fixed top-0 left-0 w-full z-50 py-4 transition-all duration-300 bg-background ${
         scrolled
-          ? "md:bg-black/40 md:backdrop-blur-md md:shadow-md"
+          ? "md:bg-background/50 md:backdrop-blur-md md:shadow-md"
           : "md:bg-transparent"
       }`}
     >
-      <div className="max-w-screen mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-around">
+      <div className="max-w-screen mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between xl:justify-around">
         <div className="flex gap-5 items-center">
           <Link
             href="/"
-            className="flex gap-5 items-center font-bold text-2xl tracking-widest"
+            className="flex gap-2 md:gap-5 items-center font-bold text-2xl tracking-widest"
           >
             <Image src={"/logo-nav.svg"} alt="Logo" width={70} height={70} className="" />
-            <p className="flex flex-col text-title">ALE<span className="text-accent">CONSTRUCCIONES</span></p> 
+            <p className="flex flex-col text-sm md:text-xl text-title">ALE<span className="text-accent">CONSTRUCCIONES</span></p> 
           </Link>
         </div>
 
-        <div className="hidden md:flex items-center gap-4 lg:gap-8">
+        <div className="hidden xl:flex items-center gap-4 lg:gap-8">
           <nav className="flex gap-4 lg:gap-6 text-xs md:text-[15px] tracking-wide lg:tracking-wider">
             {navItems.map((item) => {
               const isActive =
@@ -72,7 +72,7 @@ export function Header() {
 
           <Link
             href="/contact"
-            className="text-white tracking-wider px-4 py-1 border-2 border-accent rounded-2xl text-sm font-semibold transition duration-300 hover:scale-110"
+            className="text-title tracking-wider px-4 py-1 border-2 border-accent rounded-2xl text-sm font-semibold transition duration-300 hover:scale-110"
           >
             COTIZAR
           </Link>
@@ -80,21 +80,21 @@ export function Header() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden relative w-6 h-6 flex items-center justify-center"
+          className="xl:hidden relative w-6 h-6 flex items-center justify-center"
           aria-label="Boton de navegacion"
         >
           <span
-            className={`absolute h-0.5 w-6 bg-white transition-all duration-300 ${
+            className={`absolute h-0.5 w-6 bg-title transition-all duration-300 ${
               mobileOpen ? "rotate-45 translate-y-0" : "-translate-y-2"
             }`}
           ></span>
           <span
-            className={`absolute h-0.5 w-6 bg-white transition-all duration-300 ${
+            className={`absolute h-0.5 w-6 bg-title transition-all duration-300 ${
               mobileOpen ? "opacity-0" : "opacity-100"
             }`}
           ></span>
           <span
-            className={`absolute h-0.5 w-6 bg-white transition-all duration-300 ${
+            className={`absolute h-0.5 w-6 bg-title transition-all duration-300 ${
               mobileOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
             }`}
           ></span>
@@ -104,7 +104,7 @@ export function Header() {
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${
           mobileOpen ? "max-h-125 opacity-100" : "max-h-0 opacity-0"
-        } bg-black/90 backdrop-blur-md`}
+        } bg-background backdrop-blur-md`}
       >
         <div className="flex flex-col items-center gap-6 py-6 text-sm tracking-wider">
           {navItems.map((item) => {

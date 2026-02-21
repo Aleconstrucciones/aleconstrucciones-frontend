@@ -11,7 +11,7 @@ export default function ProjectContent({ project }: Props) {
   return (
     <section className="w-full">
 
-      <div className="prose prose-base md:prose-lg max-w-none">
+      <div className="text-description prose prose-base md:prose-lg max-w-none">
         <RichText content={project.description} />
       </div>
     </section>

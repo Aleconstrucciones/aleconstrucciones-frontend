@@ -42,7 +42,7 @@ function WhatsAppCTA() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 40 }}
           transition={{ type: "spring", stiffness: 200, damping: 15 }}
-          className="fixed bottom-10 md:bottom-15 right-5 md:right-15 z-50 flex items-center"
+          className="fixed bottom-5 md:bottom-15 right-5 md:right-15 z-50 flex items-center"
         >
           <AnimatePresence>
             {tooltipVisible && (

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 async function HomePage() {
 
   const homeResponse = await fetchAPI<Hero>("/api/home?populate[carousel][populate]=image")
-  const servicesResponse = await fetchAPI<Service[]>("/api/services?filters[featured][$eq]=true&sort=order:asc&pagination[limit]=1&populate=image")
+  const servicesResponse = await fetchAPI<Service[]>("/api/services?filters[featured][$eq]=true&sort=order:asc&pagination[limit]=4&populate=image")
   const projectsResponse = await fetchAPI<Project[]>("/api/projects?sort=createdAt:desc&pagination[limit]=3&populate=featuredImage")
   const aboutResponse = await fetchAPI<About>("/api/about");
 
@@ -29,14 +29,14 @@ async function HomePage() {
   const services = servicesResponse.data
 
   return (
-    <main className="">
+    <section className="">
       <HeroCarousel slides={slides} />
       <HomeServices services={services} />
       <ProcessProject />
       <HomeProjects projects={projects}/>
       <HomeAbout about={about} />
       <HomeContact />
-    </main>
+    </section>
   );
 }
 

@@ -9,7 +9,7 @@ function Providers({logo}: Props) {
 
     return (
         <div className="mt-16 md:mt-24">
-            <h2 className="text-2xl sm:text-3xl text-center font-bold mb-10">
+            <h2 className="text-3xl sm:text-5xl text-center text-title font-bold mb-10">
                 Nuestros Proveedores
             </h2>
 

@@ -23,15 +23,13 @@ function ProjectCard({ project, index }: Props) {
         ease: [0.22, 1, 0.36, 1],
       }}
       className={`
+        card
         w-full
         flex
         flex-col
         md:flex-row
         ${!isEven ? "md:flex-row-reverse" : ""}
-        rounded-2xl
         overflow-hidden
-        border-2
-        border-red-600/50
       `}
     >
       <div className="relative w-full md:w-1/2 h-62 sm:h-80 md:h-105">
@@ -49,15 +47,15 @@ function ProjectCard({ project, index }: Props) {
         <div>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">
+              <h2 className="text-xl sm:text-2xl md:text-3xl text-title font-semibold">
                 {project.title}
               </h2>
-              <p className="text-sm sm:text-base text-gray-500">
+              <p className="text-sm sm:text-base text-description/60">
                 {project.location}
               </p>
             </div>
 
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-description/60">
               {new Date(project.startDate).getFullYear()}
               {project.endDate &&
                 ` - ${new Date(project.endDate).getFullYear()}`}
@@ -65,7 +63,7 @@ function ProjectCard({ project, index }: Props) {
           </div>
 
           {project.shortDescription && (
-            <p className="text-sm sm:text-base leading-relaxed text-gray-600">
+            <p className="text-sm sm:text-base leading-relaxed text-description">
               {project.shortDescription}
             </p>
           )}
