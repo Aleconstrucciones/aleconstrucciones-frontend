@@ -15,7 +15,6 @@ interface HeroCarouselProps {
 }
 
 export function HeroCarousel({ slides }: HeroCarouselProps) {
-
     const prevRef = useRef<HTMLButtonElement>(null);
     const nextRef = useRef<HTMLButtonElement>(null);
     if (!slides || slides.length === 0) return null;
@@ -41,7 +40,7 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
                 modules={[Autoplay, Pagination, Navigation]}
                 pagination={{ clickable: true }}
                 navigation
-                autoplay={{ delay: 20000, disableOnInteraction: false }}
+                autoplay={{ delay: 5000, disableOnInteraction: false }}
                 loop
                 className="h-full"
                 onBeforeInit={(swiper) => {
@@ -79,23 +78,23 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
 
                                         {slide.ctaText && slide.ctaLink && (
                                             <div>
-                                            <a
-                                                href={slide.ctaLink}
-                                                target="_blank"
-                                                className="
-                                                inline-block
-                                                bg-accent
-                                                text-title
-                                                px-8 py-4
-                                                font-semibold
-                                                tracking-wide
-                                                rounded-md
-                                                hover:opacity-90
-                                                transition
-                                                "
-                                            >
-                                                {slide.ctaText}
-                                            </a>
+                                                <a
+                                                    href={slide.ctaLink}
+                                                    target="_blank"
+                                                    className="
+                                                    inline-block
+                                                    bg-accent
+                                                    text-title
+                                                    px-8 py-4
+                                                    font-semibold
+                                                    tracking-wide
+                                                    rounded-md
+                                                    hover:opacity-90
+                                                    transition
+                                                    "
+                                                >
+                                                    {slide.ctaText}
+                                                </a>
                                             </div>
                                         )}
 

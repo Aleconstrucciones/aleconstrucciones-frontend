@@ -1,24 +1,68 @@
 "use client";
 
-import { useState, Fragment } from "react";
+import { useSearchParams } from "next/navigation";
+import { useState, useEffect, Fragment } from "react";
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption, Transition } from "@headlessui/react";
 import { createContactRequest } from "@/lib/contact";
-import { ContactRequestType } from "@/types/contact-request";
+import { ContactRequestType, ContactRequestProject } from "@/types/contact-request";
 import { FloatingInput } from "../app/contact/components/ui/FloatingInput";
+import AsideContact from "./AsideContact";
 
 const contactTypes: ContactRequestType[] = ["Contacto", "Cotizacion"];
+const projectTypes: ContactRequestProject[] = [
+  "Albañilería",
+  "Carpintería",
+  "Cerramientos",
+  "Climatización",
+  "Construcciones Generales",
+  "Electricidad",
+  "Gasista",
+  "Herrería",
+  "Impermeabilizaciones",
+  "Instalación de pisos",
+  "Pintura",
+  "Piscinas",
+  "Plomería",
+  "Servicios de diseño y dirección",
+  "Techos",
+  "Trabajos en altura",
+  "Vidriería",
+  "Yesería",
+];
 
 export function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [type, setType] =
-    useState<ContactRequestType>("Contacto");
+  const searchParams = useSearchParams();
+  const [type, setType] = useState<ContactRequestType>("Contacto");
+  const [projectType, setProjectType] = useState<ContactRequestProject | null>(null);
 
-  async function handleSubmit(
-    e: React.FormEvent<HTMLFormElement>
-  ) {
+  useEffect(() => {
+    const queryType = searchParams.get("type");
+    const queryService = searchParams.get("service");
+
+    if (queryType?.toLowerCase() === "cotizacion") {
+      setType("Cotizacion");
+    }
+
+    if (queryService) {
+      const formattedService = projectTypes.find((p) => p.toLowerCase() === queryService.toLowerCase());
+
+      if (formattedService) {
+        setProjectType(formattedService)
+      }
+    }
+  }, [searchParams]);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
+
+    if (type === "Cotizacion" && !projectType) {
+      alert("Por favor seleccioná el servicio a cotizar.");
+      setLoading(false);
+      return;
+    }
 
     const formData = new FormData(e.currentTarget);
 
@@ -30,12 +74,13 @@ export function ContactForm() {
         phone: formData.get("phone") as string,
         message: formData.get("message") as string,
         type,
-        projectType: formData.get("projectType") as string,
+        projectType: type === "Cotizacion" ? projectType! : undefined,
       });
 
       setSuccess(true);
       e.currentTarget.reset();
       setType("Contacto");
+      setProjectType(null);
     } catch {
       alert(
         "Hubo un error al enviar la solicitud. Por favor, inténtalo de nuevo."
@@ -47,87 +92,117 @@ export function ContactForm() {
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <aside className="card p-6 lg:p-8 shadow-xl lg:sticky lg:top-24">
-        <h2 className="text-2xl font-semibold text-title tracking-wide">
-          ¿Preferís escribirnos directo?
-        </h2>
-        <p className="text-description/70 mt-2 tracking-wide">
-          Abrí el chat de Whatsapp y envianos un mensaje.
-        </p>
-        <a 
-            href="" 
-            target="_blank" 
-            className="mt-6 inline-block rounded-xl w-full text-center font-medium tracking-wide button"
-        >
-            Whatsapp
-        </a>
-
-        <div className="mt-6 grid gap-1">
-            <div className="flex items-start gap-5">
-                <span className="w-5 h-5 bg-accent/30 text-accent/80 rounded-full self-center place-content-center place-items-center">
-                    <svg className="w-5 md:w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                </span>
-                <div>
-                    <h3 className="text-lg text-title font-medium">Atención personalizada</h3>
-                    <p className="text-sm text-description/70">Un asesor te responde.</p>
-                </div>
-            </div>
-            <div className="flex items-start gap-5">
-                <span className="w-5 h-5 bg-accent/30 text-accent/80 rounded-full self-center place-content-center place-items-center">
-                    <svg className="w-5 md:w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                </span>
-                <div>
-                    <h3 className="text-lg font-medium text-title">Respuestas en el día</h3>
-                    <p className="text-sm text-description/70">Horarios hábiles de X a X.</p>
-                </div>
-            </div>
-            <div className="flex items-start gap-5">
-                <span className="w-5 h-5 bg-accent/30 text-accent/80 rounded-full self-center place-content-center place-items-center">
-                    <svg className="w-5 md:w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                </span>
-                <div>
-                    <h3 className="text-lg font-medium text-title">Asesoramiento sin cargo</h3>
-                    <p className="text-sm text-description/70">Nos contás y te guiamos.</p>
-                </div>
-            </div>
-
-            <div className="bg-background border border-accent/50 rounded-2xl mt-10 text-description p-4">
-                <p className="text-description/70">También podés completar el formulario y te respondemos por correo con los detalles.</p>
-            </div>
-        </div>
-      </aside>
-
-      <form onSubmit={handleSubmit} className="card lg:col-span-2 p-6 md:p-8 shadow-2xl flex flex-col gap-6"
+      <AsideContact />
+      <form
+        onSubmit={handleSubmit}
+        className="card lg:col-span-2 p-6 md:p-8 shadow-2xl flex flex-col gap-6"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <FloatingInput name="name" label="Nombre" required />
           <FloatingInput name="lastname" label="Apellido" required />
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
-          <FloatingInput name="email" label="Correo" type="email"required />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <FloatingInput name="email" label="Correo" type="email" required />
           <FloatingInput name="phone" label="Teléfono" type="tel" required />
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
-            <Listbox value={type} onChange={setType}>
+        <div className="flex flex-col gap-6">
+          <Listbox
+            value={type}
+            onChange={(value) => {
+              setType(value);
+              if (value !== "Cotizacion") {
+                setProjectType(null);
+              }
+            }}
+          >
             {({ open }) => (
-                <div className="relative">
+              <div className="relative">
                 <ListboxButton className="form-input flex items-center justify-between">
-                    <span className="text-description/50">{type}</span>
-
-                    <svg className={`w-5 h-5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
+                  <span className="text-description/50">{type}</span>
+                  <svg
+                    className={`w-5 h-5 transition-transform duration-200 ${
+                      open ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
                 </ListboxButton>
 
                 <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-200"
+                  enterFrom="opacity-0 scale-95 translate-y-1"
+                  enterTo="opacity-100 scale-100 translate-y-0"
+                  leave="transition ease-in duration-150"
+                  leaveFrom="opacity-100 scale-100 translate-y-0"
+                  leaveTo="opacity-0 scale-95 translate-y-1"
+                >
+                  <ListboxOptions className="absolute mt-3 w-full rounded-2xl border border-accent/10 bg-card shadow-2xl overflow-hidden z-20">
+                    {contactTypes.map((option) => (
+                      <ListboxOption
+                        key={option}
+                        value={option}
+                        className={({ active }) =>
+                          `px-4 py-3 cursor-pointer transition ${
+                            active
+                              ? "bg-accent/50 text-description"
+                              : "text-description hover:bg-card"
+                          }`
+                        }
+                      >
+                        {({ selected }) => (
+                          <div className="flex justify-between items-center">
+                            <span
+                              className={selected ? "font-semibold" : ""}
+                            >
+                              {option}
+                            </span>
+                          </div>
+                        )}
+                      </ListboxOption>
+                    ))}
+                  </ListboxOptions>
+                </Transition>
+              </div>
+            )}
+          </Listbox>
+          {type === "Cotizacion" && (
+            <Listbox value={projectType} onChange={setProjectType}>
+              {({ open }) => (
+                <div className="relative">
+                  <ListboxButton className="form-input flex items-center justify-between">
+                    <span className="text-description/50">
+                      {projectType ??
+                        "Seleccioná el servicio a cotizar"}
+                    </span>
+                    <svg
+                      className={`w-5 h-5 transition-transform duration-200 ${
+                        open ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </ListboxButton>
+
+                  <Transition
                     as={Fragment}
                     enter="transition ease-out duration-200"
                     enterFrom="opacity-0 scale-95 translate-y-1"
@@ -135,50 +210,46 @@ export function ContactForm() {
                     leave="transition ease-in duration-150"
                     leaveFrom="opacity-100 scale-100 translate-y-0"
                     leaveTo="opacity-0 scale-95 translate-y-1"
-                >
-                    <ListboxOptions className="absolute mt-3 w-full rounded-2xl border border-accent/10 bg-card shadow-2xl overflow-hidden z-20">
-                    {contactTypes.map((option) => (
+                  >
+                    <ListboxOptions className="absolute mt-3 w-full rounded-2xl border border-accent/10 bg-card shadow-2xl overflow-hidden z-20 max-h-60 overflow-y-auto">
+                      {projectTypes.map((option) => (
                         <ListboxOption
-                        key={option}
-                        value={option}
-                        className={({ active }) => `px-4 py-3 cursor-pointer transition ${active ? "bg-white text-black" : "text-white hover:bg-white/10"}`}>
-                        {({ selected }) => (
+                          key={option}
+                          value={option}
+                          className={({ active }) =>
+                            `px-4 py-3 cursor-pointer transition ${
+                              active
+                                ? "bg-accent/50 text-description"
+                                : "text-description hover:bg-card"
+                            }`
+                          }
+                        >
+                          {({ selected }) => (
                             <div className="flex justify-between items-center">
-                            <span className={selected ? "font-semibold" : ""}>
+                              <span
+                                className={selected ? "font-semibold" : ""}
+                              >
                                 {option}
-                            </span>
-
-                            {selected && (
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                </svg>
-                            )}
+                              </span>
                             </div>
-                        )}
+                          )}
                         </ListboxOption>
-                    ))}
+                      ))}
                     </ListboxOptions>
-                </Transition>
+                  </Transition>
                 </div>
-            )}
+              )}
             </Listbox>
-            {type === "Cotizacion" && (
-            <FloatingInput name="projectType" label="Tipo de proyecto"/>
-            )}
+          )}
         </div>
 
-
-        <textarea name="message" placeholder="Escribe tu mensaje aquí..." className="min-h-32 sm:min-h-72 form-input resize-none" />
-
-        <button
-          disabled={loading}
-          className="w-full sm:w-auto sm:self-end button font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
-        >
-          {loading ? "Enviando..." : "Enviar Consulta"}
+        <textarea name="message" placeholder="Escribe tu mensaje aquí..." className="min-h-32 sm:min-h-72 form-input resize-none"/>
+        <button disabled={loading} className="w-full sm:w-auto sm:self-end button font-semibold disabled:opacity-60 disabled:cursor-not-allowed">
+          {loading ? "Enviando..." : type === "Cotizacion" ? "Solicitar Cotización" : "Enviar Consulta"}
         </button>
 
         {success && (
-          <p className="text-green-400 text-sm">Mensaje enviado correctamente. Te contactaremos pronto.</p>
+          <p className="text-green-400 text-sm"> Mensaje enviado correctamente. Te contactaremos pronto.</p>
         )}
       </form>
     </section>

@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { fetchAPI } from "@/lib/api";
 import { Provider } from "@/types/provider";
 import NewProviders from "./components/NewProviders";
-import Providers from "./components/Providers";
 
 export const metadata: Metadata = {
   title: "Proveedores",
@@ -22,7 +21,6 @@ async function ProvidersPage() {
             <div className="text-description tracking-wide">
                 <NewProviders description={data.description} />
             </div>
-            <Providers logo={data.logo} />
         </section>
     );
 }

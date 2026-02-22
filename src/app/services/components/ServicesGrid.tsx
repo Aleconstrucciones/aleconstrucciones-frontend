@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import ServiceModal from "./ServiceModal";
 import "swiper/css";
 import "swiper/css/pagination"
@@ -40,19 +40,22 @@ function ServicesGrid({ services }: Props) {
       <Swiper
         modules={[Navigation, Pagination]}
         loop
-        speed={600}
+        speed={1500}
         pagination={{ clickable: true }}
         breakpoints={{
           0: {
             slidesPerView: 1,
+            slidesPerGroup: 1,
             spaceBetween: 20,
           },
           640: {
             slidesPerView: 2,
+            slidesPerGroup: 2,
             spaceBetween: 20,
           },
           1440: {
             slidesPerView: 3,
+            slidesPerGroup: 3,
             spaceBetween: 20,
           },
         }}
@@ -89,7 +92,7 @@ function ServicesGrid({ services }: Props) {
                 <div className="absolute inset-0 bg-background/55 group-hover:bg-background/65 transition-all duration-500" />
 
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <h2 className="text-white text-2xl xl:text-3xl font-semibold tracking-wide">
+                  <h2 className="text-title text-2xl xl:text-3xl font-semibold tracking-wide">
                     {service.name}
                   </h2>
                 </div>

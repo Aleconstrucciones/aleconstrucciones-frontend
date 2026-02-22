@@ -16,7 +16,7 @@ export function FloatingInput({ label, name, ...props }: FloatingInputProps) {
           rounded-2xl
           border-2 border-accent/40
           px-4 pt-6 pb-2
-          text-white
+          text-title
           placeholder-transparent
           focus:outline-none
           focus:border-accent/70

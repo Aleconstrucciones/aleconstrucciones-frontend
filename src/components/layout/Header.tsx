@@ -71,7 +71,7 @@ export function Header() {
           </nav>
 
           <Link
-            href="/contact"
+            href="/contact?type=cotizacion"
             className="text-title tracking-wider px-4 py-1 border-2 border-accent rounded-2xl text-sm font-semibold transition duration-300 hover:scale-110"
           >
             COTIZAR

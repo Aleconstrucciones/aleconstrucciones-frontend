@@ -12,7 +12,7 @@ function NewProviders({description}: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 my-16 md:my-20">
 
             <div className="flex flex-col lg:col-span-2 gap-6 md:gap-8 px-6 md:px-10 py-6 rounded-lg">
-                <div className="text-base md:text-lg">
+                <div className="text-center md:text-start text-base md:text-xl leading-8">
                     <RichText content={description} />
                 </div>
             </div>
