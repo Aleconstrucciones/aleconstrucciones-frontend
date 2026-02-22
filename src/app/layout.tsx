@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import WhatsAppCTA from "@/components/layout/WhatsAppCTA";
 import "./globals.css";
 
-export const metadadata: Metadata = {
+export const metadata: Metadata = {
   title: {
     default: "Ale Construcciones | Obras y Servicios de Construcción",
     template: "%s, | Ale Construcciones"
@@ -16,7 +16,7 @@ export const metadadata: Metadata = {
   openGraph: {
     title: "Ale Construcciones",
     description: "Especialistas en construccion, obras civiles y proyectos integrales.",
-    url: "hhtps://aleconstrucciones.com",
+    url: "htps://aleconstrucciones.com",
     siteName: "Ale Construcciones",
     locale: "es_AR",
     type: "website"

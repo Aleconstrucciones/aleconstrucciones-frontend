@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -13,7 +14,9 @@ function ContactPage() {
         <h1 className="text-3xl sm:text-4xl lg:text-5xl text-center text-title font-bold">Contacto</h1>
         <span className="mt-1 md:mt-2 lg:mt-4 mb-19 block h-0.5 w-20 md:w-25 lg:w-30 bg-accent origin-center" />
       </div>
-      <ContactForm />
+      <Suspense fallback={null}>
+        <ContactForm />
+      </Suspense>
     </section>
   );
 }
