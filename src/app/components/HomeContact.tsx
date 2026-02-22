@@ -1,6 +1,7 @@
 "use client"
 
 import { ContactForm } from "@/components/ContactForm";
+import { Suspense } from "react";
 
 function HomeContact() {
 
@@ -14,7 +15,9 @@ function HomeContact() {
                 <span className="mt-2 lg:mt-4 block h-0.5 w-30 bg-accent" />
             </div>
             <div className="mt-15">
-                <ContactForm />
+                <Suspense fallback={null}>
+                    <ContactForm />
+                </Suspense>
             </div>
         </section>
     );
