@@ -8,7 +8,7 @@ import { ContactRequestType, ContactRequestProject } from "@/types/contact-reque
 import { FloatingInput } from "../app/contact/components/ui/FloatingInput";
 import AsideContact from "./AsideContact";
 
-const contactTypes: ContactRequestType[] = ["Contacto", "Cotizacion"];
+const contactTypes: ContactRequestType[] = ["Consulta", "Cotización"];
 const projectTypes: ContactRequestProject[] = [
   "Albañilería",
   "Carpintería",
@@ -34,15 +34,15 @@ export function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const searchParams = useSearchParams();
-  const [type, setType] = useState<ContactRequestType>("Contacto");
+  const [type, setType] = useState<ContactRequestType>("Consulta");
   const [projectType, setProjectType] = useState<ContactRequestProject | null>(null);
 
   useEffect(() => {
     const queryType = searchParams.get("type");
     const queryService = searchParams.get("service");
 
-    if (queryType?.toLowerCase() === "cotizacion") {
-      setType("Cotizacion");
+    if (queryType?.toLowerCase() === "Cotización") {
+      setType("Cotización");
     }
 
     if (queryService) {
@@ -58,7 +58,7 @@ export function ContactForm() {
     e.preventDefault();
     setLoading(true);
 
-    if (type === "Cotizacion" && !projectType) {
+    if (type === "Cotización" && !projectType) {
       alert("Por favor seleccioná el servicio a cotizar.");
       setLoading(false);
       return;
@@ -74,12 +74,12 @@ export function ContactForm() {
         phone: formData.get("phone") as string,
         message: formData.get("message") as string,
         type,
-        projectType: type === "Cotizacion" ? projectType! : undefined,
+        projectType: type === "Cotización" ? projectType! : undefined,
       });
 
       setSuccess(true);
       e.currentTarget.reset();
-      setType("Contacto");
+      setType("Consulta");
       setProjectType(null);
     } catch {
       alert(
@@ -112,7 +112,7 @@ export function ContactForm() {
             value={type}
             onChange={(value) => {
               setType(value);
-              if (value !== "Cotizacion") {
+              if (value !== "Cotización") {
                 setProjectType(null);
               }
             }}
@@ -147,7 +147,7 @@ export function ContactForm() {
                   leaveFrom="opacity-100 scale-100 translate-y-0"
                   leaveTo="opacity-0 scale-95 translate-y-1"
                 >
-                  <ListboxOptions className="absolute mt-3 w-full rounded-2xl border border-accent/10 bg-card shadow-2xl overflow-hidden z-20">
+                  <ListboxOptions className="absolute mt-3 w-full rounded-2xl border-2 border-accent/50 bg-card shadow-2xl overflow-hidden z-20">
                     {contactTypes.map((option) => (
                       <ListboxOption
                         key={option}
@@ -176,7 +176,7 @@ export function ContactForm() {
               </div>
             )}
           </Listbox>
-          {type === "Cotizacion" && (
+          {type === "Cotización" && (
             <Listbox value={projectType} onChange={setProjectType}>
               {({ open }) => (
                 <div className="relative">
@@ -211,7 +211,7 @@ export function ContactForm() {
                     leaveFrom="opacity-100 scale-100 translate-y-0"
                     leaveTo="opacity-0 scale-95 translate-y-1"
                   >
-                    <ListboxOptions className="absolute mt-3 w-full rounded-2xl border border-accent/10 bg-card shadow-2xl overflow-hidden z-20 max-h-60 overflow-y-auto">
+                    <ListboxOptions className="absolute mt-3 w-full rounded-2xl border-2 border-accent/50 bg-card shadow-2xl overflow-hidden z-20 max-h-60 overflow-y-auto">
                       {projectTypes.map((option) => (
                         <ListboxOption
                           key={option}
@@ -245,7 +245,7 @@ export function ContactForm() {
 
         <textarea name="message" placeholder="Escribe tu mensaje aquí..." className="min-h-32 sm:min-h-72 form-input resize-none"/>
         <button disabled={loading} className="w-full sm:w-auto sm:self-end button font-semibold disabled:opacity-60 disabled:cursor-not-allowed">
-          {loading ? "Enviando..." : type === "Cotizacion" ? "Solicitar Cotización" : "Enviar Consulta"}
+          {loading ? "Enviando..." : type === "Cotización" ? "Solicitar Cotización" : "Enviar Consulta"}
         </button>
 
         {success && (

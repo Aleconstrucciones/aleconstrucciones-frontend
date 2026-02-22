@@ -1,4 +1,4 @@
-export type ContactRequestType = "Contacto" | "Cotizacion";
+export type ContactRequestType = "Consulta" | "Cotización";
 export type ContactRequestProject = "Albañilería" | "Carpintería" | "Cerramientos" | "Climatización" | "Construcciones Generales" | "Electricidad" | "Gasista" | "Herrería" | "Impermeabilizaciones" | "Instalación de pisos" | "Pintura" | "Piscinas" | "Plomería" | "Servicios de diseño y dirección" | "Techos" | "Trabajos en altura" | "Vidriería" | "Yesería";
 
 export interface ContactPayload {
