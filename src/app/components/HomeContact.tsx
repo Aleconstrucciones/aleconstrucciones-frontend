@@ -11,7 +11,7 @@ function HomeContact() {
                     CONTACTO
                 </span>
                 <h2 className="text-3xl md:text-5xl lg:text-6xl text-title font-bold">Contanos tu proyecto</h2>
-                <span className="mt-4 block h-0.5 w-30 bg-accent" />
+                <span className="mt-2 lg:mt-4 block h-0.5 w-30 bg-accent" />
             </div>
             <div className="mt-15">
                 <ContactForm />

@@ -4,13 +4,13 @@ import { CalendarClock, FileCheck, Handshake, Pencil, Search } from "lucide-reac
 function ProcessProject() {
 
     return (
-        <section className="flex flex-col max-w-7xl mx-auto px-6 py-16">
+        <section className="flex flex-col max-w-7xl mx-auto px-6 py-20">
             <div>
                 <span className="inline-flex items-center mb-5 rounded-full border border-accent/30 bg-accent/50 px-2 py-1 md:px-3 md:py-2 text-xs tracking-[0.15rem] text-description/80 backdrop-blur">
                     PROCESO
                 </span>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-title">Proceso de un Proyecto</h2>
-                <span className="mt-4 block h-0.5 w-30 bg-accent" />
+                <span className="mt-2 lg:mt-4 block h-0.5 w-30 bg-accent" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 text-center mt-15">
                 <div className="flex flex-col items-center gap-5">

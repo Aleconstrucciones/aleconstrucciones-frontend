@@ -56,24 +56,50 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
 
                     return(
                         <SwiperSlide key={slide.id}>
-                            <div className="relative w-full h-screen">
-                                <Image src={imageUrl} alt={slide.image.alternativeText || slide.title } fill className="object-cover" priority={slide.type === "slogan"} />
-                                <div className="absolute inset-0 bg-black/50"/>
+                            <div className="relative w-full h-[80vh] md:h-screen">
+                                <Image
+                                src={imageUrl}
+                                alt={slide.image.alternativeText || slide.title}
+                                fill
+                                className="object-cover"
+                                priority={slide.type === "slogan"}
+                                />
+                                <div className="absolute inset-0 bg-background/50" />
                                 <div className="absolute inset-0 flex items-center">
-                                    <div className="container mx-auto px-6 max-w-3xl">
-                                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-title">
+                                    <div className="container mx-auto px-6">
+                                        <div className="max-w-2xl lg:max-w-4xl flex flex-col gap-6 md:gap-8">
+                                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-title">
                                             {slide.title}
                                         </h1>
                                         {slide.description && (
-                                            <p className="text-base text-description sm:text-lg md:text-xl mb-6">
-                                                {slide.description}
+                                            <p className="text-base sm:text-xl md:text-2xl text-description leading-relaxed">
+                                            {slide.description}
                                             </p>
                                         )}
+
                                         {slide.ctaText && slide.ctaLink && (
-                                            <a href={slide.ctaLink} target="_blank" className="inline-block bg-accent/80 text-title px-6 py-3 font-semibold rounded-md hover:opacity-90 transition">
+                                            <div>
+                                            <a
+                                                href={slide.ctaLink}
+                                                target="_blank"
+                                                className="
+                                                inline-block
+                                                bg-accent
+                                                text-title
+                                                px-8 py-4
+                                                font-semibold
+                                                tracking-wide
+                                                rounded-md
+                                                hover:opacity-90
+                                                transition
+                                                "
+                                            >
                                                 {slide.ctaText}
                                             </a>
+                                            </div>
                                         )}
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>

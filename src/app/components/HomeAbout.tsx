@@ -21,7 +21,7 @@ function HomeAbout({ about }: Props) {
             Sobre Nosotros
           </h2>
 
-          <span className="mt-4 block h-0.5 w-30 bg-accent" />
+          <span className="mt-2 lg:mt-4 block h-0.5 w-30 bg-accent" />
 
           <div className="mt-15 text-base sm:text-lg md:text-xl leading-relaxed text-description">
             <RichText content={about.description} />

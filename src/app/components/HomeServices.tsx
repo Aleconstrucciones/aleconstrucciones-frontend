@@ -16,7 +16,7 @@ function HomeServices({ services }: Props) {
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-title">
         Nuestros Principales Servicios
       </h2>
-      <span className="mt-4 block h-0.5 w-30 bg-accent" />
+      <span className="mt-2 lg:mt-4 block h-0.5 w-30 bg-accent" />
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-15">
         {services.map((service) => {
@@ -71,7 +71,7 @@ function HomeServices({ services }: Props) {
         })}
       </div>
 
-      <div className="flex justify-center mt-10">
+      <div className="flex justify-center mt-12">
         <Link href={"/services"} className="inline-block button">
           Todos los servicios
         </Link>

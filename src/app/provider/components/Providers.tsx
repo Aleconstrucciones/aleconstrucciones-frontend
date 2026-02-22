@@ -13,7 +13,7 @@ function Providers({logo}: Props) {
                 Nuestros Proveedores
             </h2>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 place-items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-15 place-items-center">
                 {logo.map((item) => {
 
                     const logoUrl = `${item.url}`
@@ -21,15 +21,15 @@ function Providers({logo}: Props) {
                     return(
                         <div 
                             key={item.id} 
-                            className="flex items-center justify-center p-4 w-full"
+                            className="flex items-center justify-center w-full"
                         >
                             {item.url && (
                                 <Image 
                                     src={logoUrl} 
                                     alt={item.alternativeText || "Proveedor"} 
-                                    width={120} 
-                                    height={120}
-                                    className="object-contain max-h-20 w-auto"
+                                    width={70} 
+                                    height={70}
+                                    className="object-contain max-h-70 w-auto"
                                 />
                             )}
                         </div>

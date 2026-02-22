@@ -32,8 +32,8 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 w-full z-50 py-4 transition-all duration-300 bg-background ${
         scrolled
-          ? "md:bg-background/50 md:backdrop-blur-md md:shadow-md"
-          : "md:bg-transparent"
+          ? "xl:bg-background/50 xl:backdrop-blur-md md:shadow-md"
+          : "xl:bg-transparent"
       }`}
     >
       <div className="max-w-screen mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between xl:justify-around">
@@ -102,7 +102,7 @@ export function Header() {
       </div>
 
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
+        className={`xl:hidden overflow-hidden transition-all duration-300 ${
           mobileOpen ? "max-h-125 opacity-100" : "max-h-0 opacity-0"
         } bg-background backdrop-blur-md`}
       >
@@ -119,8 +119,8 @@ export function Header() {
                 onClick={() => setMobileOpen(false)}
                 className={`transition-colors ${
                   isActive
-                    ? "font-semibold text-red-600"
-                    : "text-white hover:text-gray-300"
+                    ? "font-semibold text-accent"
+                    : "text-title hover:text-description/70"
                 }`}
               >
                 {item.name}
@@ -131,7 +131,7 @@ export function Header() {
           <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
-            className="text-white tracking-wide lg:tracking-wider px-3 lg:px-4 py-1 border border-red-600 rounded-2xl text-xs md:text-sm font-semibold transition duration-300 hover:scale-110"
+            className="text-title tracking-wide lg:tracking-wider px-3 lg:px-4 py-1 border border-accent rounded-2xl text-xs md:text-sm font-semibold transition duration-300 hover:scale-110"
           >
             COTIZAR
           </Link>
