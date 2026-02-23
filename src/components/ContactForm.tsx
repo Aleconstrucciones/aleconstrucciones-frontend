@@ -8,7 +8,7 @@ import { ContactRequestType, ContactRequestProject } from "@/types/contact-reque
 import { FloatingInput } from "../app/contact/components/ui/FloatingInput";
 import AsideContact from "./AsideContact";
 
-const contactTypes: ContactRequestType[] = ["Consulta", "Cotización"];
+const contactTypes: ContactRequestType[] = ["Consulta", "Cotización", "Proveedor"];
 const projectTypes: ContactRequestProject[] = [
   "Albañilería",
   "Carpintería",
@@ -37,9 +37,16 @@ export function ContactForm() {
   const queryType = searchParams.get("type");
   const queryService = searchParams.get("service");
 
-  const [type, setType] = useState<ContactRequestType>(
-    queryType?.toLowerCase() === "cotizacion" ? "Cotización" : "Consulta"
-  );
+  const [type, setType] = useState<ContactRequestType>(() => {
+    if (!queryType) return "Consulta";
+
+    const normalized = queryType.toLowerCase();
+
+    if (normalized === "cotizacion") return "Cotización";
+    if (normalized === "proveedor") return "Proveedor";
+
+    return "Consulta";
+  });
 
   const [projectType, setProjectType] = useState<ContactRequestProject | null>(
     queryService
@@ -225,6 +232,8 @@ export function ContactForm() {
             ? "Enviando..."
             : type === "Cotización"
             ? "Solicitar Cotización"
+            : type === "Proveedor"
+            ? "Enviar Información"
             : "Enviar Consulta"}
         </button>
 

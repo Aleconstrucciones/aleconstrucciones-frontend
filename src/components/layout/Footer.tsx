@@ -6,7 +6,7 @@ export function Footer() {
     return (
         <footer className="flex flex-col items-center border-t border-accent/50 mt-20 bg-card/20">
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-15 max-w-6xl px-6 py-14">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-15 max-w-7xl px-6 py-14">
                 <div className="text-center sm:text-left">
                     <div className="flex justify-center md:justify-start gap-2">
                         <Image src={"logo-nav.svg"} alt="Logo" width={25} height={25} className="self-start" />
@@ -42,10 +42,10 @@ export function Footer() {
                             <Phone size={18} className="text-accent/50" /> Teléfono
                         </span>
                         <span className="flex items-center justify-center sm:justify-start gap-3">
-                            <Mail size={18} className="text-accent/50" /> Correo Electrónico
+                            <Mail size={18} className="text-accent/50" /> aleconstrucciones.info@gmail.com.
                         </span>
                         <span className="flex items-center justify-center sm:justify-start gap-3">
-                            <MapPin size={18} className="text-accent/50" /> Ubicación
+                            <MapPin size={18} className="text-accent/50" /> Ensenada, Buenos Aires.
                         </span>
                     </div>
                 </div>
@@ -56,7 +56,9 @@ export function Footer() {
                     </h3>
                     <div className="flex justify-center sm:justify-start gap-4">
                         <span className="p-2 border-2 border-accent/50 rounded-full hover:scale-110 transition">
-                            <Instagram size={20} className="text-accent/50" />
+                            <Link href={"https://www.instagram.com/ale.empresaconstructora"} target="_blank">
+                                <Instagram size={20} className="text-accent/50" />
+                            </Link>
                         </span>
                         <span className="p-2 border-2 border-accent/50 rounded-full hover:scale-110 transition">
                             <Facebook size={20} className="text-accent/50" />

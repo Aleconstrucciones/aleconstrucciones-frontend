@@ -25,38 +25,42 @@ function ServicesGrid({ services }: Props) {
       
       <button
         ref={prevRef}
-        className="hidden xl:block absolute -left-15 top-1/2 -translate-y-1/2 z-10 text-accent"
+        className="hidden xl:block absolute -left-25 top-[40%] -translate-y-1/2 z-10 text-accent"
+        aria-label="Boton de desplazamiento izquierdo"
       >
-        <ChevronLeft size={50} strokeWidth={1.2} />
+        <ChevronLeft size={100} strokeWidth={1.2} />
       </button>
 
       <button
         ref={nextRef}
-        className="hidden xl:block absolute -right-15 top-1/2 -translate-y-1/2 z-10 text-accent"
+        className="hidden xl:block absolute -right-25 top-[40%] -translate-y-1/2 z-10 text-accent"
+        aria-label="Boton de desplazamiento derecho"
       >
-        <ChevronRight size={50} strokeWidth={1.2} />
+        <ChevronRight size={100} strokeWidth={1.2} />
       </button>
 
       <Swiper
         modules={[Navigation, Pagination]}
         loop
-        speed={1500}
         pagination={{ clickable: true }}
         breakpoints={{
           0: {
             slidesPerView: 1,
             slidesPerGroup: 1,
             spaceBetween: 20,
+            speed: 600,
           },
           640: {
             slidesPerView: 2,
             slidesPerGroup: 2,
             spaceBetween: 20,
+            speed: 1000,
           },
           1440: {
             slidesPerView: 3,
             slidesPerGroup: 3,
             spaceBetween: 20,
+            speed: 1500,
           },
         }}
         onBeforeInit={(swiper) => {

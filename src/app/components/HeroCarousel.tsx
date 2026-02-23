@@ -25,6 +25,7 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
             <button
                 ref={prevRef}
                 className="hidden xl:block absolute left-5 top-1/2 -translate-y-1/2 z-10 text-accent"
+                aria-label="Boton de desplazamiento izquierdo"
             >
                 <ChevronLeft size={60} strokeWidth={1.2} />
             </button>
@@ -32,6 +33,7 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
             <button
                 ref={nextRef}
                 className="hidden xl:block absolute right-5 top-1/2 -translate-y-1/2 z-10 text-accent"
+                aria-label="Boton de desplazamiento derecho"
             >
                 <ChevronRight size={60} strokeWidth={1.2} />
             </button>

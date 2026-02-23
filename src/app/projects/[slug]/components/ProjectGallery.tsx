@@ -46,6 +46,7 @@ export default function ProjectGallery({ project }: Props) {
           <button
             ref={prevRef}
             className="hidden xl:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 text-accent"
+            aria-label="Boton de desplazamiento izquierdo"
           >
             <ChevronLeft size={60} strokeWidth={1.2} />
           </button>
@@ -53,6 +54,7 @@ export default function ProjectGallery({ project }: Props) {
           <button
             ref={nextRef}
             className="hidden xl:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 text-accent"
+            aria-label="Boton de desplazamiento derecho"
           >
             <ChevronRight size={60} strokeWidth={1.2} />
           </button>

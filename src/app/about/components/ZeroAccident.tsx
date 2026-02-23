@@ -39,7 +39,7 @@ function ZeroAccidentSection({ data }: Props) {
 
           {heroImageUrl && (
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-end gap-8">
-              <div className="flex flex-col order-2 sm:order-1 text-center sm:text-left border-t sm:border-t-0 sm:border-r border-accent pt-4 sm:pt-0 max-w-md">
+              <div className="flex flex-col order-2 sm:order-1 mx-auto text-center sm:text-left border-t sm:border-t-0 sm:border-r border-accent pt-4 sm:pt-0 sm:pl-8 max-w-md">
                 <p className="font-semibold text-description text-lg">
                   {data.securityHero.responsibleName}
                 </p>
@@ -48,7 +48,7 @@ function ZeroAccidentSection({ data }: Props) {
                 </p>
               </div>
 
-              <div className="flex order-1 sm:order-2 relative w-48 sm:w-56 md:w-64 lg:w-72 aspect-square rounded-3xl overflow-hidden">
+              <div className="flex order-1 md:order-2 relative w-48 sm:w-56 md:w-64 lg:w-72 aspect-square rounded-3xl overflow-hidden">
                 <Image
                   src={heroImageUrl}
                   alt={

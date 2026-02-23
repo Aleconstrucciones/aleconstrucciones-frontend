@@ -21,7 +21,7 @@ function NewProviders({description}: Props) {
             <div className="flex flex-col gap-10 items-center justify-center">
                 <Image src={"/logo-nav.svg"} alt="Logo" width={350} height={350} />
                 <Link 
-                    href={"/contact"} 
+                    href={"/contact?type=proveedor"} 
                     className="button text-sm md:text-base text-center"
                 >
                     SUMATE COMO PROVEEDOR
