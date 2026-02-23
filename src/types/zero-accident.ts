@@ -1,7 +1,7 @@
 import { StrapiMedia, StrapiRichText } from "./strapi";
 
 export interface ZeroAccident {
-    securityZero: SecurityHero;
+    securityHero: SecurityHero;
     safetyCulture: SafetyCulture;
     zeroAccidentDefinition: ZeroAccidentDefinition;
     safetyAndHygiene: SafetyAndHygiene;

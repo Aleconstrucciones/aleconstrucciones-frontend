@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 
 async function AboutPage() {
 
-    const response = await fetchAPI<About>("/api/about?populate[value][populate]=logo&populate[zeroAccident][populate]=*");
+    const response = await fetchAPI<About>(
+        "/api/about?populate[value][populate]=logo&populate[zeroAccident][populate][securityHero][populate]=responsibleMedia&populate[zeroAccident][populate][zeroAccidentDefinition][populate]=items&populate[zeroAccident][populate][safetyCulture]=*&populate[zeroAccident][populate][safetyAndHygiene]=*");
     const data = response.data;
     
     return (
