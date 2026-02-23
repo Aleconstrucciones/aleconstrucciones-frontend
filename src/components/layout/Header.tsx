@@ -129,7 +129,7 @@ export function Header() {
           })}
 
           <Link
-            href="/contact"
+            href="/contact?type=cotizacion"
             onClick={() => setMobileOpen(false)}
             className="text-title tracking-wide lg:tracking-wider px-3 lg:px-4 py-1 border border-accent rounded-2xl text-xs md:text-sm font-semibold transition duration-300 hover:scale-110"
           >

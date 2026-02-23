@@ -1,5 +1,6 @@
 import { StrapiRichText } from "./strapi";
 import { Value } from "./value";
+import { ZeroAccident } from "./zero-accident";
 
 export interface About {
     id: number;
@@ -8,7 +9,8 @@ export interface About {
     description: StrapiRichText;
     mission: string;
     vision: string;
-    value: Value[]; 
+    value: Value[];
+    zeroAccident: ZeroAccident;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;

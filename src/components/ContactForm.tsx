@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect, Fragment } from "react";
+import { useState, Fragment } from "react";
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption, Transition } from "@headlessui/react";
 import { createContactRequest } from "@/lib/contact";
 import { ContactRequestType, ContactRequestProject } from "@/types/contact-request";
@@ -34,25 +34,18 @@ export function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const searchParams = useSearchParams();
-  const [type, setType] = useState<ContactRequestType>("Consulta");
-  const [projectType, setProjectType] = useState<ContactRequestProject | null>(null);
+  const queryType = searchParams.get("type");
+  const queryService = searchParams.get("service");
 
-  useEffect(() => {
-    const queryType = searchParams.get("type");
-    const queryService = searchParams.get("service");
+  const [type, setType] = useState<ContactRequestType>(
+    queryType?.toLowerCase() === "cotizacion" ? "Cotización" : "Consulta"
+  );
 
-    if (queryType?.toLowerCase() === "Cotización") {
-      setType("Cotización");
-    }
-
-    if (queryService) {
-      const formattedService = projectTypes.find((p) => p.toLowerCase() === queryService.toLowerCase());
-
-      if (formattedService) {
-        setProjectType(formattedService)
-      }
-    }
-  }, [searchParams]);
+  const [projectType, setProjectType] = useState<ContactRequestProject | null>(
+    queryService
+      ? projectTypes.find((p) => p.toLowerCase() === queryService.toLowerCase()) ?? null
+      : null
+  );
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -82,9 +75,7 @@ export function ContactForm() {
       setType("Consulta");
       setProjectType(null);
     } catch {
-      alert(
-        "Hubo un error al enviar la solicitud. Por favor, inténtalo de nuevo."
-      );
+      alert("Hubo un error al enviar la solicitud. Por favor, inténtalo de nuevo.");
     } finally {
       setLoading(false);
     }
@@ -112,15 +103,13 @@ export function ContactForm() {
             value={type}
             onChange={(value) => {
               setType(value);
-              if (value !== "Cotización") {
-                setProjectType(null);
-              }
+              if (value !== "Cotización") setProjectType(null);
             }}
           >
             {({ open }) => (
               <div className="relative">
                 <ListboxButton className="form-input flex items-center justify-between">
-                  <span className="text-description/50">{type}</span>
+                  <span className="text-description/50">{type ?? "Motivo de contacto"}</span>
                   <svg
                     className={`w-5 h-5 transition-transform duration-200 ${
                       open ? "rotate-180" : ""
@@ -130,11 +119,7 @@ export function ContactForm() {
                     strokeWidth={2}
                     viewBox="0 0 24 24"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 9l-7 7-7-7"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </ListboxButton>
 
@@ -154,19 +139,13 @@ export function ContactForm() {
                         value={option}
                         className={({ active }) =>
                           `px-4 py-3 cursor-pointer transition ${
-                            active
-                              ? "bg-accent/50 text-description"
-                              : "text-description hover:bg-card"
+                            active ? "bg-accent/50 text-description" : "text-description hover:bg-card"
                           }`
                         }
                       >
                         {({ selected }) => (
                           <div className="flex justify-between items-center">
-                            <span
-                              className={selected ? "font-semibold" : ""}
-                            >
-                              {option}
-                            </span>
+                            <span className={selected ? "font-semibold" : ""}>{option}</span>
                           </div>
                         )}
                       </ListboxOption>
@@ -182,8 +161,7 @@ export function ContactForm() {
                 <div className="relative">
                   <ListboxButton className="form-input flex items-center justify-between">
                     <span className="text-description/50">
-                      {projectType ??
-                        "Seleccioná el servicio a cotizar"}
+                      {projectType ?? "Seleccioná el servicio a cotizar"}
                     </span>
                     <svg
                       className={`w-5 h-5 transition-transform duration-200 ${
@@ -194,11 +172,7 @@ export function ContactForm() {
                       strokeWidth={2}
                       viewBox="0 0 24 24"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19 9l-7 7-7-7"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </ListboxButton>
 
@@ -218,19 +192,13 @@ export function ContactForm() {
                           value={option}
                           className={({ active }) =>
                             `px-4 py-3 cursor-pointer transition ${
-                              active
-                                ? "bg-accent/50 text-description"
-                                : "text-description hover:bg-card"
+                              active ? "bg-accent/50 text-description" : "text-description hover:bg-card"
                             }`
                           }
                         >
                           {({ selected }) => (
                             <div className="flex justify-between items-center">
-                              <span
-                                className={selected ? "font-semibold" : ""}
-                              >
-                                {option}
-                              </span>
+                              <span className={selected ? "font-semibold" : ""}>{option}</span>
                             </div>
                           )}
                         </ListboxOption>
@@ -243,13 +211,27 @@ export function ContactForm() {
           )}
         </div>
 
-        <textarea name="message" placeholder="Escribe tu mensaje aquí..." className="min-h-32 sm:min-h-72 form-input resize-none"/>
-        <button disabled={loading} className="w-full sm:w-auto sm:self-end button font-semibold disabled:opacity-60 disabled:cursor-not-allowed">
-          {loading ? "Enviando..." : type === "Cotización" ? "Solicitar Cotización" : "Enviar Consulta"}
+        <textarea
+          name="message"
+          placeholder="Escribe tu mensaje aquí..."
+          className="min-h-32 sm:min-h-72 form-input resize-none"
+        />
+
+        <button
+          disabled={loading}
+          className="w-full sm:w-auto sm:self-end button font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {loading
+            ? "Enviando..."
+            : type === "Cotización"
+            ? "Solicitar Cotización"
+            : "Enviar Consulta"}
         </button>
 
         {success && (
-          <p className="text-green-400 text-sm"> Mensaje enviado correctamente. Te contactaremos pronto.</p>
+          <p className="text-green-400 text-sm">
+            Mensaje enviado correctamente. Te contactaremos pronto.
+          </p>
         )}
       </form>
     </section>

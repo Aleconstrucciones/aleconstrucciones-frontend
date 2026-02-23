@@ -1,6 +1,7 @@
 import { StrapiRichText } from "@/types/strapi";
 import { RichText } from "@/components/RichText";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
     description: StrapiRichText;
@@ -17,7 +18,8 @@ function NewProviders({description}: Props) {
                 </div>
             </div>
 
-            <div className="flex items-center justify-center">
+            <div className="flex flex-col gap-10 items-center justify-center">
+                <Image src={"/logo-nav.svg"} alt="Logo" width={350} height={350} />
                 <Link 
                     href={"/contact"} 
                     className="button text-sm md:text-base text-center"

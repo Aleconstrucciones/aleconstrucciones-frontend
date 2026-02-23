@@ -4,6 +4,7 @@ import { About } from "@/types/about";
 import AboutHero from "./components/AboutHero";
 import MissionVision from "./components/MissionVision";
 import AboutValues from "./components/AboutValues";
+import ZeroAccidentSection from "./components/ZeroAccident";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 async function AboutPage() {
 
-    const response = await fetchAPI<About>("/api/about?populate[value][populate]=logo");
+    const response = await fetchAPI<About>("/api/about?populate[value][populate]=logo&populate[zeroAccident][populate]=*");
     const data = response.data;
     
     return (
@@ -20,6 +21,7 @@ async function AboutPage() {
             <AboutHero title={data.title} description={data.description} />
             <MissionVision mission={data.mission} vision={data.vision} />
             <AboutValues values={data.value} />
+            <ZeroAccidentSection data={data.zeroAccident} />
         </section>
     );
 }
