@@ -58,13 +58,15 @@ export function ContactForm() {
     e.preventDefault();
     setLoading(true);
 
+    const form = e.currentTarget; // 👈 guardamos referencia
+
     if (type === "Cotización" && !projectType) {
       alert("Por favor seleccioná el servicio a cotizar.");
       setLoading(false);
       return;
     }
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
 
     try {
       await createContactRequest({
@@ -78,11 +80,13 @@ export function ContactForm() {
       });
 
       setSuccess(true);
-      e.currentTarget.reset();
+      form.reset(); // 👈 ahora funciona
       setType("Consulta");
       setProjectType(null);
-    } catch {
-      alert("Hubo un error al enviar la solicitud. Por favor, inténtalo de nuevo.");
+
+    } catch (err) {
+      console.error("ERROR REAL:", err);
+      alert("Hubo un error al enviar la solicitud.");
     } finally {
       setLoading(false);
     }
@@ -238,7 +242,7 @@ export function ContactForm() {
         </button>
 
         {success && (
-          <p className="text-green-400 text-sm">
+          <p className="text-description text-md">
             Mensaje enviado correctamente. Te contactaremos pronto.
           </p>
         )}
