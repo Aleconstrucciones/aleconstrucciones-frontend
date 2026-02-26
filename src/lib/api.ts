@@ -3,7 +3,7 @@ import { StrapiResponse } from "@/types/api";
 export const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 if (!STRAPI_URL) {
-    console.error('NEXT_PUBLIC_STRAPI_URL no esta definida');
+    throw new Error('NEXT_PUBLIC_STRAPI_URL no esta definida');
 }
 
 export async function fetchAPI<T>(endpoint: string): Promise<StrapiResponse<T>> {
