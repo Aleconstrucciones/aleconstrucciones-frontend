@@ -13,8 +13,6 @@ import HomeAbout from "./components/HomeAbout";
 import HomeClients from "./components/HomeClients";
 import HomeContact from "./components/HomeContact";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "Inicio",
   description: "Constructora en La Plata con amplia experiencia en obras civiles y proyectos de calidad."
