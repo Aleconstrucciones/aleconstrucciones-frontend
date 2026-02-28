@@ -80,7 +80,7 @@ export function ContactForm() {
       });
 
       setSuccess(true);
-      form.reset(); // 👈 ahora funciona
+      form.reset();
       setType("Consulta");
       setProjectType(null);
 
