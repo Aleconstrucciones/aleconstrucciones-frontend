@@ -58,7 +58,7 @@ export function ContactForm() {
     e.preventDefault();
     setLoading(true);
 
-    const form = e.currentTarget; // 👈 guardamos referencia
+    const form = e.currentTarget;
 
     if (type === "Cotización" && !projectType) {
       alert("Por favor seleccioná el servicio a cotizar.");
