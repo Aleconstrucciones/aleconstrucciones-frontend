@@ -70,7 +70,6 @@ function ServicesGrid({ services }: Props) {
           }
         }}
       >
-        //
         {services.map((service) => (
           <SwiperSlide key={service.id}>
             <motion.section
