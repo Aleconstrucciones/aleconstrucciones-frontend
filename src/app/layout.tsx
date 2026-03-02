@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Ale Construcciones",
     locale: "es_AR",
     type: "website"
-  }
+  },
 };
 
 const roboto = Roboto({
@@ -36,7 +36,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={roboto.variable}>
+    <html lang="es" className={roboto.variable} style={{ colorScheme: "dark" }}>
       <body className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">

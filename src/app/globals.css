@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --card: #d3d3d3;
-  --foreground: #c5a9a9;
+  --background: #0b090a;
+  --card: #161A1D;
+  --description: #F5F3F4;
+  --title: #FFFFFF;
+  --accent: #BA181B;
 }
 
 @theme inline {
@@ -16,20 +18,9 @@
   --font-roboto: var(--font-roboto);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0b090a;
-    --card: #161A1D;
-    --description: #F5F3F4;
-    --title: #FFFFFF;
-    --accent: #BA181B;
-
-  }
-}
-
 body {
   background: var(--background);
-  color: var(--text);
+  color: var(--description);
   font-family: var(--font-roboto);
 }
 
