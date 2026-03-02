@@ -28,7 +28,7 @@ function HomeClients({ clients }: Props) {
         className="relative w-full overflow-hidden mt-15
         before:absolute before:left-0 before:top-0 before:h-full before:w-10 md:before:w-20
         before:bg-linear-to-r before:from-background before:to-transparent before:z-10
-        after:absolute after:right-0 after:top-0 after:h-full after:w-10 md:before:w-20 
+        after:absolute after:right-0 after:top-0 after:h-full after:w-10 md:after:w-20 
         after:bg-linear-to-l after:from-background after:to-transparent after:z-10"
       >
         <div className="flex w-max animate-marquee whitespace-nowrap">
