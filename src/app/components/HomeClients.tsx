@@ -2,15 +2,45 @@
 
 import { Client } from "@/types/client";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 interface Props {
   clients: Client[];
 }
 
 function HomeClients({ clients }: Props) {
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let animationFrame: number;
+    let position = 0;
+
+    const speed = 0.5;
+
+    const firstBlockWidth = track.scrollWidth / 2;
+
+    const animate = () => {
+      position -= speed;
+
+      if (Math.abs(position) >= firstBlockWidth) {
+        position = 0;
+      }
+
+      track.style.transform = `translate3d(${position}px, 0, 0)`;
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [clients]);
+
   if (!clients || clients.length === 0) return null;
 
-  const tripleClients = [...clients, ...clients, ...clients];
+  const duplicated = [...clients, ...clients];
 
   return (
     <section className="flex flex-col max-w-7xl mx-auto px-6 py-20">
@@ -29,12 +59,15 @@ function HomeClients({ clients }: Props) {
       <div
         className="relative w-full overflow-hidden mt-16
         before:absolute before:left-0 before:top-0 before:h-full before:w-10 md:before:w-20
-        before:bg-linear-to-r before:from-background before:to-transparent before:z-10
+        before:bg-gradient-to-r before:from-background before:to-transparent before:z-10
         after:absolute after:right-0 after:top-0 after:h-full after:w-10 md:after:w-20 
-        after:bg-linear-to-l after:from-background after:to-transparent after:z-10"
+        after:bg-gradient-to-l after:from-background after:to-transparent after:z-10"
       >
-        <div className="flex marquee-track">
-          {tripleClients.map((client, index) => (
+        <div
+          ref={trackRef}
+          className="flex will-change-transform"
+        >
+          {duplicated.map((client, index) => (
             <div
               key={`${client.id}-${index}`}
               className="flex items-center justify-center px-6 md:px-12 h-32 md:h-56 shrink-0"
