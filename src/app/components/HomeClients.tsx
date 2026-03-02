@@ -10,42 +10,63 @@ interface Props {
 function HomeClients({ clients }: Props) {
   if (!clients || clients.length === 0) return null;
 
-  const marqueeClients = [...clients, ...clients];
-
   return (
-    <section className="flex flex-col max-w-7xl mx-auto px-6 py-20 overflow-hidden">
+    <section className="flex flex-col max-w-7xl mx-auto px-6 py-20">
       <div>
         <span className="inline-flex items-center mb-5 rounded-full border border-accent/30 bg-accent/50 px-2 py-1 md:px-3 md:py-2 text-xs tracking-[0.15rem] text-description/80 backdrop-blur">
           NOSOTROS
         </span>
+
         <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-title">
           Confían en Nosotros
         </h2>
+
         <span className="mt-2 lg:mt-4 block h-0.5 w-30 bg-accent" />
       </div>
 
       <div
-        className="relative w-full overflow-hidden mt-15
+        className="relative w-full overflow-hidden mt-16
         before:absolute before:left-0 before:top-0 before:h-full before:w-10 md:before:w-20
-        before:bg-linear-to-r before:from-background before:to-transparent before:z-10
+        before:bg-gradient-to-r before:from-background before:to-transparent before:z-10
         after:absolute after:right-0 after:top-0 after:h-full after:w-10 md:after:w-20 
-        after:bg-linear-to-l after:from-background after:to-transparent after:z-10"
+        after:bg-gradient-to-l after:from-background after:to-transparent after:z-10"
       >
-        <div className="flex w-max animate-marquee whitespace-nowrap">
-          {marqueeClients.map((client, index) => (
-            <div
-              key={`${client.id}-${index}`}
-              className="flex items-center justify-center px-6 md:px-12 h-40 md:h-64 shrink-0"
-            >
-              <Image
-                src={client.logo.url}
-                alt={client.logo.alternativeText || client.name}
-                width={240}
-                height={140}
-                className="h-full w-auto object-contain"
-              />
-            </div>
-          ))}
+        <div className="flex marquee-track">
+          {/* BLOQUE 1 */}
+          <div className="flex shrink-0">
+            {clients.map((client) => (
+              <div
+                key={`first-${client.id}`}
+                className="flex items-center justify-center px-6 md:px-12 h-32 md:h-56 shrink-0"
+              >
+                <Image
+                  src={client.logo.url}
+                  alt={client.logo.alternativeText || client.name}
+                  width={220}
+                  height={120}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* BLOQUE 2 (duplicado real) */}
+          <div className="flex shrink-0">
+            {clients.map((client) => (
+              <div
+                key={`second-${client.id}`}
+                className="flex items-center justify-center px-6 md:px-12 h-32 md:h-56 shrink-0"
+              >
+                <Image
+                  src={client.logo.url}
+                  alt={client.logo.alternativeText || client.name}
+                  width={220}
+                  height={120}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
