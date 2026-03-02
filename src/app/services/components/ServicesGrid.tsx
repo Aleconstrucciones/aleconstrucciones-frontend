@@ -43,6 +43,7 @@ function ServicesGrid({ services }: Props) {
         modules={[Navigation, Pagination]}
         loop
         pagination={{ clickable: true }}
+        className="services-swiper"
         breakpoints={{
           0: {
             slidesPerView: 1,
