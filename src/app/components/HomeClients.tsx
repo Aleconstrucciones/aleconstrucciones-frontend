@@ -10,6 +10,8 @@ interface Props {
 function HomeClients({ clients }: Props) {
   if (!clients || clients.length === 0) return null;
 
+  const tripleClients = [...clients, ...clients, ...clients];
+
   return (
     <section className="flex flex-col max-w-7xl mx-auto px-6 py-20">
       <div>
@@ -27,46 +29,25 @@ function HomeClients({ clients }: Props) {
       <div
         className="relative w-full overflow-hidden mt-16
         before:absolute before:left-0 before:top-0 before:h-full before:w-10 md:before:w-20
-        before:bg-gradient-to-r before:from-background before:to-transparent before:z-10
+        before:bg-linear-to-r before:from-background before:to-transparent before:z-10
         after:absolute after:right-0 after:top-0 after:h-full after:w-10 md:after:w-20 
-        after:bg-gradient-to-l after:from-background after:to-transparent after:z-10"
+        after:bg-linear-to-l after:from-background after:to-transparent after:z-10"
       >
         <div className="flex marquee-track">
-          {/* BLOQUE 1 */}
-          <div className="flex shrink-0">
-            {clients.map((client) => (
-              <div
-                key={`first-${client.id}`}
-                className="flex items-center justify-center px-6 md:px-12 h-32 md:h-56 shrink-0"
-              >
-                <Image
-                  src={client.logo.url}
-                  alt={client.logo.alternativeText || client.name}
-                  width={220}
-                  height={120}
-                  className="h-full w-auto object-contain"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* BLOQUE 2 (duplicado real) */}
-          <div className="flex shrink-0">
-            {clients.map((client) => (
-              <div
-                key={`second-${client.id}`}
-                className="flex items-center justify-center px-6 md:px-12 h-32 md:h-56 shrink-0"
-              >
-                <Image
-                  src={client.logo.url}
-                  alt={client.logo.alternativeText || client.name}
-                  width={220}
-                  height={120}
-                  className="h-full w-auto object-contain"
-                />
-              </div>
-            ))}
-          </div>
+          {tripleClients.map((client, index) => (
+            <div
+              key={`${client.id}-${index}`}
+              className="flex items-center justify-center px-6 md:px-12 h-32 md:h-56 shrink-0"
+            >
+              <Image
+                src={client.logo.url}
+                alt={client.logo.alternativeText || client.name}
+                width={220}
+                height={120}
+                className="h-full w-auto object-contain"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
