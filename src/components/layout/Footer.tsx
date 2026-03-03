@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
+import { Facebook, Instagram, Mail, MapPin, Phone, Target } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -39,13 +39,13 @@ export function Footer() {
                     </h3>
                     <div className="flex flex-col gap-3 text-sm text-description/60">
                         <span className="flex items-center justify-center sm:justify-start gap-3">
-                            <Phone size={18} className="text-accent/50" /> Teléfono
+                            <Phone size={18} className="text-accent/50" /> 221-674-2355
                         </span>
                         <span className="flex items-center justify-center sm:justify-start gap-3">
-                            <Mail size={18} className="text-accent/50" /> aleconstrucciones.info@gmail.com.
+                            <Mail size={18} className="text-accent/50" /> aleconstrucciones.info@gmail.com
                         </span>
                         <span className="flex items-center justify-center sm:justify-start gap-3">
-                            <MapPin size={18} className="text-accent/50" /> Ensenada, Buenos Aires.
+                            <MapPin size={18} className="text-accent/50" /> La Plata, Buenos Aires.
                         </span>
                     </div>
                 </div>
@@ -61,7 +61,9 @@ export function Footer() {
                             </Link>
                         </span>
                         <span className="p-2 border-2 border-accent/50 rounded-full hover:scale-110 transition">
-                            <Facebook size={20} className="text-accent/50" />
+                            <Link href={"https://www.facebook.com/profile.php?id=61585539477240"} target="_blank">
+                                <Facebook size={20} className="text-accent/50" />
+                            </Link>
                         </span>
                     </div>
                 </div>

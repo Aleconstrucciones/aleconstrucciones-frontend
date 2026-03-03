@@ -9,8 +9,8 @@ function WhatsAppCTA() {
   const [hovered, setHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const phone = "5492215624299";
-  const message = "Hola! Quisiera solicitar una cotización.";
+  const phone = "5492216742355";
+  const message = "Hola! Quisiera hacerte una consulta.";
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
   useEffect(() => {

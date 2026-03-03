@@ -19,6 +19,10 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const phone = "5492216742355";
+  const message = "Hola! Quisiera realizar una cotización.";
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -71,7 +75,8 @@ export function Header() {
           </nav>
 
           <Link
-            href="/contact?type=cotizacion"
+            href={url}
+            target="_blank"
             className="text-title tracking-wider px-4 py-1 border-2 border-accent rounded-2xl text-sm font-semibold transition duration-300 hover:scale-110"
           >
             COTIZAR
@@ -129,7 +134,8 @@ export function Header() {
           })}
 
           <Link
-            href="/contact?type=cotizacion"
+            href={url}
+            target="_blank"
             onClick={() => setMobileOpen(false)}
             className="text-title tracking-wide lg:tracking-wider px-3 lg:px-4 py-1 border border-accent rounded-2xl text-xs md:text-sm font-semibold transition duration-300 hover:scale-110"
           >
